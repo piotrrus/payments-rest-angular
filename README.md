@@ -1,7 +1,7 @@
 # payments-rest-angular
 This is an alternative version of OOP Php Payments.
 
-Rest is written in Laravel. Front part has been designed in Angular v.7
+Rest Api it's been written in Laravel. Front part has been designed in Angular v.7
 
 There's no saving data at the moment.
 And no authorization.
