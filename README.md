@@ -1,5 +1,5 @@
 # payments-rest-angular
-This is an alternative version of OOP Php only Payments.
+This is an alternative version of OOP Php Payments.
 
 Rest is written in Laravel. Front part has been designed in Angular.
 
