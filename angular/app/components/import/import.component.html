@@ -1,0 +1,139 @@
+<div
+  class="container"
+  fxLayout
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+
+  <div class="item item-1" fxFlex="20%">
+    <mat-form-field>
+      <mat-label>Choose bank</mat-label>
+      <mat-select [(value)]="bankSelectedFileType">
+        <mat-option *ngFor="let el of banks" [value]="el.file_type">
+          {{ el.bank }} ({{ el.file_type }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="item item-2" fxFlex="20%">
+    <input
+      hidden
+      type="file"
+      (change)="onFileSelect($event.target)"
+      name="myfile"
+      class="import-btn"
+      #fileInput/>
+
+    <button  *ngIf="bankSelectedFileType"
+      type="button"
+      class="btn-outline-white"
+      mat-raised-button
+      (click)="fileInput.click()">
+      Choose File
+    </button>
+  </div>
+
+  <div class="item item-3" fxFlex="3%">
+    <img *ngIf="filename && bankFileTypeOK" src="ok.png" class="file-status">
+  </div>
+
+  <div class="item item-3" fxFlex="57%">
+      <ul *ngIf="filename">
+        <li>File: {{ filename }}</li>
+        <li>Size: {{ filesize }}</li>
+      </ul>
+  </div>
+</div>
+<mat-card *ngIf="filename && !bankFileTypeOK">
+  You cannot import this type of file. Choose another one.
+</mat-card>
+
+<div class="example-container mat-elevation-z2" *ngIf="dataLength">
+  <div class="example-header">
+    <div fxLayout="row">
+      <p class="right">Payments list ({{ dataLength }})</p>
+    </div>
+  </div>
+
+  <div class="cleaner h40"></div>
+  <div class="container">
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-body" style="min-height:300px;">
+          <div class="row">
+            <div class="col-md-12">
+              <div [formGroup]="paymentForm">
+                <div formArrayName="payments" class="well well-lg">
+                  <div
+                    *ngFor="let payment of payments.controls; let i = index"
+                    [formGroupName]="i"
+                  >
+                    <div fxLayout="row">
+                      <div fxFlex="99%" fxFlexOffset="1%">
+                        <app-payment-forms [paymentsData]="paymentsData[i]"></app-payment-forms>
+                      </div>
+                    </div>
+
+                    <!--
+                                      (onData)="setPepFormData($event)"
+                                      (onValid)="setPepFormIsValid($event)"> -->
+                    <div fxLayout="row"></div>
+                  </div>
+                </div>
+
+                <!-- <table class="listax">
+                <tr>
+                  <td>date</td>
+                  <td>client</td>
+                  <td>amount</td>
+                  <td>account</td>
+                  <td>purpose</td>
+                  <td>exist</td>
+                </tr>
+
+                <tr *ngFor="let payment of paymentsData">
+                  <td width="7%" class="listax">
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="paymentDate" placeholder="* Name" value="{{ payment.paymentDate | date: 'yyyy-MM-dd' }}">
+                      </mat-form-field>
+                  </td>
+                  <td width="15%" class="listax">
+                    
+                    {{ payment.name }} {{ payment.surname }}
+                  </td>
+                  <td width="7%" class="listax">{{ payment.amount }}
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="amount" placeholder="* Amount" value="{{ payment.amount }}">
+                      </mat-form-field>
+                  </td>
+                  <td width="19%" class="listax">
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="account" placeholder="* Account" value="{{ payment.account }}">
+                      </mat-form-field>
+                  </td>
+                  <td width="45%" class="listax">
+                      <mat-form-field class="example-full-width">
+                          <input matInput formControlName="paymentPurpose" placeholder="* Payment purpose" value="{{ payment.paymentPurpose }}">
+                      </mat-form-field>
+                  </td>
+                  <td width="7%" class="listax">NOT EXIST</td>
+                </tr>
+              </table> -->
+              </div>
+            </div>
+            <div class="cleaner h40"></div>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn-outline-white right"
+        mat-raised-button
+        (click)="savePayments()"
+      >
+        Save data
+      </button>
+    </div>
+  </div>
+</div>

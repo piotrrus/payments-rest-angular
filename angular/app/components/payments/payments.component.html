@@ -1,0 +1,75 @@
+<div class="example-container mat-elevation-z2">
+  <div class="example-header">
+    <div fxLayout="row">
+      <h2 class="right">Payments ({{ dataLength }})
+        <!-- <span style="float:right">
+          <mat-progress-spinner
+            class="example-margin">
+        </mat-progress-spinner>
+        </span> -->
+      </h2>
+    </div>
+  </div>
+
+  <mat-table
+    #table
+    [dataSource]="paymentsDataSrc"
+    matSort
+    *ngIf="dataLength > 1">
+
+    <ng-container matColumnDef="payment_date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Payment date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.payment_date }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="full_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Client
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.full_name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="account">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Account
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.account }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Amount
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.amount }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="payment_purpose">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="width:200px">
+        Payment purpose
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.payment_purpose }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    *ngIf="dataLength > 10"
+    #paginator
+    [pageSize]="10"
+    [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

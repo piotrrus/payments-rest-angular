@@ -1,0 +1,68 @@
+.import-btn {
+    width: 200px;
+}
+
+table.listax {
+    margin:1em auto; 
+    border-collapse:collapse;
+} 
+
+td.listax{ 
+    color:white; 
+    border-bottom:1px solid #e5eff8;
+    padding:.3em .4em;
+    font-size: 12px;
+    word-wrap: break-word
+} 
+.td-right{ 
+    text-align:right;
+} 
+
+tr.listax{
+    background:#f4f9fe; 
+    height:30px;
+}
+
+.exist{
+   padding:.1em 1em;
+}
+
+.btn-outline-white {
+    border: 2px solid #fff!important;
+    background-color: transparent!important;
+    color: #fff!important;
+}
+.btn {
+box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    padding: .84rem 2.14rem;
+    font-size: .81rem;
+    transition: .2s ease-in-out;
+    margin: .375rem;
+    border: 0;
+    /* border-radius: .125rem; */
+    border-radius: .1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    color: inherit;
+}
+.btn {
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+}
+.mat-raised-button {
+    border-radius: .1px;
+    min-width:160px;
+}
+
+.file-status{
+    width: 30px;
+    height: 30px;
+}
+
+/*../assets/ok.png*/
+
+/*.right{
+    float: right;
+}*/

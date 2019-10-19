@@ -1,0 +1,80 @@
+<div [formGroup]="paymentForm.form">
+  <div fxLayout="row">
+    
+      <div fxFlex="19%">
+          <mat-form-field class="full-width">
+        <input matInput
+          formControlName="paymentDate"
+          placeholder="* Payment date"/>
+        <mat-error *ngIf="paymentForm.name.hasError('required')">
+          {{ getErrorMessage('required') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="19%" fxFlexOffset="1%">
+        <mat-form-field class="full-width">
+        <input matInput formControlName="name" placeholder="* Name" />
+        <mat-error *ngIf="paymentForm.name.hasError('required')">
+          {{ getErrorMessage('required') }}
+        </mat-error>
+        <mat-error *ngIf="paymentForm.name.touched 
+          && paymentForm.name.hasError('textValidator')">
+          {{ getErrorMessage('lettersOnly') }}
+        </mat-error>
+        <mat-error  *ngIf="paymentForm.name.touched 
+            && paymentForm.name.hasError('maxLength')">
+          {{ getErrorMessage('maxlength') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="19%" fxFlexOffset="1%">
+        <mat-form-field class="full-width">
+        <input matInput formControlName="surname" placeholder="* Surname" />
+        <mat-error *ngIf="paymentForm.surname.hasError('required')">
+          {{ getErrorMessage('required') }}
+        </mat-error>
+        <mat-error *ngIf="paymentForm.surname.touched 
+            && paymentForm.surname.hasError('textValidator')">
+          {{ getErrorMessage('lettersOnly') }}
+        </mat-error>
+        <mat-error *ngIf="paymentForm.surname.touched 
+            && paymentForm.surname.hasError('maxLength')">
+          {{ getErrorMessage('maxlength') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="19%" fxFlexOffset="1%">
+        <mat-form-field class="full-width">
+        <input matInput formControlName="account" placeholder="* Account" />
+        <mat-error *ngIf="paymentForm.account.hasError('required')">
+          {{ getErrorMessage('required') }}
+        </mat-error>
+        <mat-error *ngIf="paymentForm.account.hasError('pattern')">
+          {{ getErrorMessage('pattern') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="19%" fxFlexOffset="1%">
+        <mat-form-field class="full-width">
+        <input matInput formControlName="amount" placeholder="* Amount" />
+        <mat-error *ngIf="paymentForm.amount.hasError('required')">
+          {{ getErrorMessage('required') }}
+        </mat-error>
+        <mat-error *ngIf="paymentForm.amount.hasError('pattern')">
+          {{ getErrorMessage('pattern') }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="5%" fxFlexOffset="1%">
+        <mat-form-field class="full-width">
+          <input matInput formControlName="exist"/>
+        </mat-form-field>
+      </div>
+
+  </div>
+</div>
