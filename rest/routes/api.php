@@ -18,8 +18,5 @@ use Illuminate\Http\Request;
 });*/
 
 Route::get('banks', 'Api\BanksController@index');
-
-Route::get('payments', 'Api\PaymentsController@index');
-Route::get('payments/exist/date/{date?}/name/{name?}/account/{account?}', 'Api\PaymentsController@exist');
-Route::get('payments/exist/date/{date?}/name/{name?}/surname/{surname}/amount/{amount}/account/{account?}', 'Api\PaymentsController@exist');
-Route::get('payments/exist/date/{date?}/name/{name?}/surname/{surname}/account/{account?}', 'Api\PaymentsController@exist');
+Route::resource('payments', 'Api\PaymentsController');
+Route::post('payments/exist/', 'Api\PaymentsController@exist');
