@@ -10,11 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('authors', 'API\AuthorsController@index');
-Route::get('books', 'API\BooksController@index');
-Route::get('readers', 'API\ReadersController@index');
