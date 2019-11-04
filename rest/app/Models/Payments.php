@@ -50,15 +50,20 @@ class Payments extends Model
         $model->save();
     }
 
+    /**
+     *
+     * @param type $data - validated request
+     * @return type
+     */
     public static function checkIfDataExist($data)
     {
         $resp = DB::table('payment_operations2')
-                ->select(DB::raw('count(id) as amount'))
-                ->where('payment_date', $data['date'])
-                ->where('name', $data['name'])
-                ->where('surname', $data['surname'])
-                ->where('account', $data['account'])
-                ->get();
+            ->select(DB::raw('count(id) as amount'))
+            ->where('payment_date', $data['payment_date'])
+            ->where('name', $data['name'])
+            ->where('surname', $data['surname'])
+            ->where('account', $data['account'])
+            ->get();
         return $resp;
     }
 
