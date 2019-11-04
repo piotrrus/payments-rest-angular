@@ -9,21 +9,8 @@ use Illuminate\Http\Request;
 class Payments extends Model
 {
 
-    public static function getAll()
-    {
-        return DB::table('payment_operations2')
-                        ->select('account', 'amount', 
-                                'payment_purpose', 'payment_date', 
-                                DB::raw('CONCAT (name, " ", surname) as full_name')
-                        )
-                        ->orderBy('payment_date', 'ASC')
-                        ->get();
-    }
-
-    public static function search(int $id)
-    {
-        return Payments::find($id);
-    }
+    protected $table   = 'payment_operations2';
+    protected $guarded = ['id', 'imported_at'];
 
     public static function insert($request)
     {
