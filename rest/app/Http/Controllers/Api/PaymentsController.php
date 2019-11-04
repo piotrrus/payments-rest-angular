@@ -39,21 +39,16 @@ class PaymentsController extends BaseController
         $response = Payments::insert($validated);
         return $this->message($response);
     }
-/**
- * 
- * @param type $date
- * @param type $name
- * @param type $surname
- * @param type $account
- * @return json response
- */
-    public function exist($date = '', $name = '', $surname = '', $account = '')
+    
+    /**
+     * 
+     * @param PaymentsFormRequest $request
+     * @return type
+     */
+    public function exist(PaymentsFormRequest $request)
     {
-        $data['date'] = $date;
-        $data['name'] = $name;
-        $data['surname'] = $surname;
-        $data['account'] = $account;
-        $payments = Payments::checkIfDataExist($data);
+        $validated = $request->validated();
+        $payments  = Payments::checkIfDataExist($validated);
         return $this->response($payments, 'Payments exist');
     }
 
